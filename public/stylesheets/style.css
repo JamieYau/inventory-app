@@ -46,6 +46,45 @@ main {
   flex-grow: 1;
 }
 
+.item-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.item {
+  background: #d5d5d5;
+  border-radius: 5px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.item-description {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.item-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.item-qty {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
 footer {
   background: #313131;
   color: #fff;

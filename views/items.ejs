@@ -1,9 +1,14 @@
-<% let body = '<h1>All Items</h1><ul>'; %>
+<% let bodyParts = ['<h1 class="title">All Items</h1><ul class="item-list">']; %>
 <% items.forEach(function(item) { %> 
-    <% body += `<li><p>${item.name}</p>
-    <p>${item.description}</p>
-    <p>${item.price}</p>
-    <p>${item.qty}</p></li>`; %>
+    <% bodyParts.push(`
+        <li class="item">
+            <p class="item-name">${item.name}</p>
+            <p class="item-description">${item.description}</p>
+            <p class="item-price">£${item.price}</p>
+            <p class="item-qty">Qty: ${item.qty}</p>
+        </li>
+    `); %>
 <% });%> 
-<% body += '</ul>'; %> 
+<% bodyParts.push('</ul>'); %> 
+<% let body = bodyParts.join(''); %>
 <%- include('layout', { title: 'Items', body: body }) %>
