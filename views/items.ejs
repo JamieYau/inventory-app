@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Items</title>
-  </head>
-  <body>
-    <h1>All Items</h1>
-    <ul>
-      <% items.forEach(function(item) { %>
-      <li>
-        <p><%= item.name %></p>
-        <p><%= item.description %></p>
-        <p><%= item.price %></p>
-        <p><%= item.qty %></p>
-      </li>
-      <% }); %>
-    </ul>
-  </body>
-</html>
+<% let body = '<h1>All Items</h1><ul>'; %>
+<% items.forEach(function(item) { %> 
+    <% body += `<li><p>${item.name}</p>
+    <p>${item.description}</p>
+    <p>${item.price}</p>
+    <p>${item.qty}</p></li>`; %>
+<% });%> 
+<% body += '</ul>'; %> 
+<%- include('layout', { title: 'Items', body: body }) %>
