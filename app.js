@@ -6,6 +6,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const indexRouter = require("./routes/index");
+const itemsRouter = require("./routes/items");
 
 const app = express();
 
@@ -22,13 +23,15 @@ app.use(express.static(path.join(__dirname, "public")));
 mongoose.set("strictQuery", false);
 
 main().catch((err) => console.log(err));
-
 async function main() {
   await mongoose.connect(process.env.MONGODB_URI);
   console.log("Connected to MongoDB");
 }
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
 
 app.use("/", indexRouter);
+app.use("/items", itemsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
