@@ -19,26 +19,27 @@ header h1 {
   color: #fff;
   font-size: 3rem;
   font-weight: 400;
-  margin: 0;
   padding: 2rem;
 }
 
 nav {
+  display: flex;
+  justify-content: center;
   background: #313131;
-  border-bottom: 1px solid #ccc;
-  border-top: 1px solid #ccc;
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
 nav ul {
   list-style: none;
   display: flex;
   justify-content: space-between;
+  width: clamp(400px, 60vw, 600px);
 }
 
 a {
   color: #00b7ff;
   text-decoration: none;
+  font-weight: 700;
 }
 
 main {
