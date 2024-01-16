@@ -1,4 +1,14 @@
-<%- include('layout', { title: 'Home', body: `
-<h1>Welcome to the home page!</h1>
-<p>This is the content of the home page.</p>
-` }) %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include ("./partials/_head"), {title}; %>
+  </head>
+  <body>
+    <header><%- include ("./partials/_header"); %></header>
+    <main>
+      <h1>Welcome to the home page!</h1>
+      <p>This is the content of the home page.</p>
+    </main>
+    <footer><%- include ("./partials/_footer"); %></footer>
+  </body>
+</html>

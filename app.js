@@ -7,6 +7,9 @@ const mongoose = require("mongoose");
 
 const indexRouter = require("./routes/index");
 const gamesRouter = require("./routes/games");
+const categoriesRouter = require("./routes/categories");
+
+const createSampleData = require("./utils/utils");
 
 const app = express();
 
@@ -30,8 +33,11 @@ async function main() {
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 
+//createSampleData().catch(console.error);
+
 app.use("/", indexRouter);
 app.use("/games", gamesRouter);
+app.use("/categories", categoriesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
