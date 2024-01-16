@@ -1,0 +1,14 @@
+<% let bodyParts = ['<h1 class="title">All Games</h1><ul class="game-list">']; %>
+<% games.forEach(function(game) { %> 
+    <% bodyParts.push(`
+        <li class="game">
+            <p class="game-name">${game.name}</p>
+            <p class="game-description">${game.description}</p>
+            <p class="game-price">£${game.price}</p>
+            <p class="game-qty">Qty: ${game.qty}</p>
+        </li>
+    `); %>
+<% });%> 
+<% bodyParts.push('</ul>'); %> 
+<% let body = bodyParts.join(''); %>
+<%- include('layout', { title: 'games', body: body }) %>

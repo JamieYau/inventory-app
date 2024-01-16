@@ -46,14 +46,14 @@ main {
   flex-grow: 1;
 }
 
-.item-list {
+.game-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
 }
 
-.item {
+.game {
   background: #d5d5d5;
   border-radius: 5px;
   padding: 1rem;
@@ -62,24 +62,24 @@ main {
   justify-content: space-between;
 }
 
-.item-name {
+.game-name {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
-.item-description {
+.game-description {
   font-size: 1rem;
   margin-bottom: 1rem;
 }
 
-.item-price {
+.game-price {
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
-.item-qty {
+.game-qty {
   font-size: 1rem;
   font-weight: 700;
   margin-bottom: 1rem;

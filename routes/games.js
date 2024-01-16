@@ -1,9 +1,9 @@
 // items.js
 const express = require("express");
 const router = express.Router();
-const itemsController = require("../controllers/itemsController");
+const gamesController = require("../controllers/gamesController");
 
-router.get("/", itemsController.index); // Show all items
+router.get("/", gamesController.index); // Show all items
 // router.get("/create", itemsController.showCreateForm); // Show the form to create a new item
 // router.post("/", itemsController.create); // Save a new item
 // router.get("/:id", itemsController.show); // Show a single item
