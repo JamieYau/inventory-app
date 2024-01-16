@@ -15,28 +15,28 @@ header {
   background: #00b7ff;
 }
 
-header h1 {
+header .title {
   color: #fff;
   font-size: 3rem;
   font-weight: 400;
   padding: 2rem;
 }
 
-nav {
+.nav-bar {
   display: flex;
   justify-content: center;
   background: #313131;
   padding: 1rem 0;
 }
 
-nav ul {
+.nav-list {
   list-style: none;
   display: flex;
   justify-content: space-between;
   width: clamp(400px, 60vw, 600px);
 }
 
-a {
+.nav-link {
   color: #00b7ff;
   text-decoration: none;
   font-weight: 700;
@@ -52,6 +52,6 @@ footer {
   padding: 1rem;
 }
 
-footer p {
+.footer-text {
   text-align: center;
 }
