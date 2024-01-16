@@ -6,8 +6,18 @@ const gameSchema = new Schema(
     name: {
       type: String,
       required: true,
+      minLength: 2,
+      maxLength: 50,
     },
-    description: String,
+    description: {
+      type: String,
+      maxLength: 200,
+    },
+    category: {
+      type: Schema.Types.ObjectId,
+      ref: "Category",
+      required: true,
+    },
     price: {
       type: Number,
       required: true,
