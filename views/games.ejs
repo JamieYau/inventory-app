@@ -6,11 +6,13 @@
   <body>
     <header><%- include ("./partials/_header"); %></header>
     <main>
-      <h1 class="title">All Games</h1>
+      <div class="main-header">
+        <h1 class="title">All Games</h1>
+      </div>
       <ul class="game-list">
         <% games.forEach(function(game) { %>
         <li class="game">
-          <p class="game-name"><%= game.name %></p>
+          <h2 class="game-name"><%= game.name %></h2>
           <p class="game-category"><%= game.category.name %></p>
           <p class="game-description"><%= game.description %></p>
           <p class="game-price">£<%= game.price %></p>

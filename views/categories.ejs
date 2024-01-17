@@ -2,21 +2,26 @@
 <html>
   <head>
     <%- include ("./partials/_head"), {title}; %>
+    <link rel="stylesheet" href="/stylesheets/categories.css" />
   </head>
   <body>
     <header><%- include ("./partials/_header"); %></header>
     <main>
-      <h1 class="title">Categories</h1>
-      <button id="new-category-button">New Category</button>
+      <div class="main-header">
+        <h1 class="category-title">Categories</h1>
+        <button id="new-category-button">New Category</button>
+      </div>
       <ul class="category-list">
         <% categories.forEach(function(category) { %>
         <li class="category">
-          <p class="category-name"><%= category.name %></p>
+          <h2 class="category-name"><%= category.name %></h2>
           <p class="category-description"><%= category.description %></p>
         </li>
         <% });%>
       </ul>
     </main>
+    <footer><%- include ("./partials/_footer"); %></footer>
+    <!-- Modal -->
     <div class="overlay" style="display: none">
       <div id="new-category" class="modal">
         <form action="/categories" method="post">
@@ -28,7 +33,7 @@
         </form>
       </div>
     </div>
-    <footer><%- include ("./partials/_footer"); %></footer>
+    <!-- End Modal -->
     <script>
       const newCategoryButton = document.getElementById("new-category-button");
       const overlay = document.querySelector(".overlay");
