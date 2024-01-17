@@ -46,14 +46,16 @@ main {
   flex-grow: 1;
 }
 
-.game-list, .category-list {
+.game-list,
+.category-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
 }
 
-.game, .category {
+.game,
+.category {
   background: #d5d5d5;
   border-radius: 5px;
   padding: 1rem;
@@ -62,13 +64,15 @@ main {
   justify-content: space-between;
 }
 
-.game-name, .category-name {
+.game-name,
+.category-name {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
-.game-description, .category-description {
+.game-description,
+.category-description {
   font-size: 1rem;
   margin-bottom: 1rem;
 }
@@ -83,6 +87,27 @@ main {
   font-size: 1rem;
   font-weight: 700;
   margin-bottom: 1rem;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 2rem;
+  border-radius: 5px;
+  z-index: 101;
 }
 
 footer {

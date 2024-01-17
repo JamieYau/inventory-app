@@ -7,6 +7,7 @@
     <header><%- include ("./partials/_header"); %></header>
     <main>
       <h1 class="title">Categories</h1>
+      <button id="new-category-button">New Category</button>
       <ul class="category-list">
         <% categories.forEach(function(category) { %>
         <li class="category">
@@ -16,6 +17,33 @@
         <% });%>
       </ul>
     </main>
+    <div class="overlay" style="display: none">
+      <div id="new-category" class="modal">
+        <form action="/categories" method="post">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+          <label for="description">Description:</label>
+          <input type="text" id="description" name="description" />
+          <input type="submit" value="Create Category" />
+        </form>
+      </div>
+    </div>
     <footer><%- include ("./partials/_footer"); %></footer>
+    <script>
+      const newCategoryButton = document.getElementById("new-category-button");
+      const overlay = document.querySelector(".overlay");
+      const modal = document.getElementById("new-category");
+      const openModal = () => {
+        overlay.style.display = "block";
+      };
+      const closeModal = () => {
+        overlay.style.display = "none";
+      };
+      newCategoryButton.addEventListener("click", openModal);
+      overlay.addEventListener("click", closeModal);
+      modal.addEventListener("click", (event) => {
+        event.stopPropagation();
+      });
+    </script>
   </body>
 </html>
