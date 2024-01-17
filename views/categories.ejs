@@ -24,6 +24,7 @@
     <!-- Modal -->
     <div class="overlay" style="display: none">
       <div id="new-category" class="modal">
+        <h2>Create Category</h2>
         <form action="/categories" method="post">
           <label for="name">Name:</label>
           <input type="text" id="name" name="name" required />
@@ -34,21 +35,6 @@
       </div>
     </div>
     <!-- End Modal -->
-    <script>
-      const newCategoryButton = document.getElementById("new-category-button");
-      const overlay = document.querySelector(".overlay");
-      const modal = document.getElementById("new-category");
-      const openModal = () => {
-        overlay.style.display = "block";
-      };
-      const closeModal = () => {
-        overlay.style.display = "none";
-      };
-      newCategoryButton.addEventListener("click", openModal);
-      overlay.addEventListener("click", closeModal);
-      modal.addEventListener("click", (event) => {
-        event.stopPropagation();
-      });
-    </script>
+    <script src="/javascripts/categories.js"></script>
   </body>
 </html>
