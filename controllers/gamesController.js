@@ -16,18 +16,13 @@ exports.create = asyncHandler(async function (req, res, next) {
 
 exports.edit = asyncHandler(async function (req, res, next) {
   const gameId = req.params.gameId;
-  const game = await Game.findById(gameId);
-  game.name = req.body.name;
-  game.description = req.body.description;
-  game.category = req.body.category;
-  game.price = req.body.price;
-  game.qty = req.body.qty;
-  await game.save();
-  res.redirect("/games");
+  const gameData = req.body;
+  await Game.findByIdAndUpdate(gameId, gameData);
+  res.sendStatus(200); // Send a 200 status code to indicate success
 });
 
 exports.delete = asyncHandler(async function (req, res, next) {
   const gameId = req.params.gameId;
   await Game.findByIdAndDelete(gameId);
-  res.redirect("/games");
+  res.sendStatus(200); // Send a 200 status code to indicate success
 });

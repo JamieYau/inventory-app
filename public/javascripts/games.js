@@ -6,6 +6,8 @@ const modals = document.querySelectorAll(".modal");
 const createModal = document.getElementById("new-game");
 const editModal = document.getElementById("edit-game");
 const deleteModal = document.getElementById("delete-game");
+const editForm = document.getElementById("edit-form");
+const deleteForm = document.querySelector("#delete-form");
 
 modals.forEach((modal) => {
   modal.addEventListener("click", (e) => {
@@ -29,8 +31,7 @@ createGameButton.addEventListener("click", () => openModal(createModal));
 editGameButtons.forEach((button) => {
   button.addEventListener("click", function (e) {
     const gameId = this.closest(".game").dataset.gameId;
-    const editForm = document.getElementById("edit-form");
-    editForm.action = `/games/edit/${gameId}`;
+    editForm.dataset.gameId = gameId; // Store the game ID in the form's dataset
     const game = this.closest(".game");
     const gameName = game.querySelector(".game-name").textContent;
     const gameDescription = game.querySelector(".game-description").textContent;
@@ -55,11 +56,43 @@ editGameButtons.forEach((button) => {
   });
 });
 
+editForm.addEventListener("submit", function (e) {
+  e.preventDefault(); // Prevent the form from submitting normally
+  const gameId = this.dataset.gameId; // Get the game ID from the form's dataset
+
+  // Get the form data
+  const formData = new FormData(this);
+  const gameData = Object.fromEntries(formData.entries());
+
+  fetch(`/games/${gameId}`, { 
+    method: "PUT",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(gameData)
+  })
+  .then((response) => {
+    if (response.ok) { // Check if the response status is 200
+      location.reload(); // Reload the page if the update was successful
+    }
+  });
+});
+
 deleteGameButtons.forEach((button) => {
   button.addEventListener("click", function (e) {
     const gameId = this.closest(".game").dataset.gameId;
-    const deleteForm = document.getElementById("delete-form");
-    deleteForm.action = `/games/delete/${gameId}`;
+    deleteForm.dataset.gameId = gameId; // Store the game ID in the form's dataset
     openModal(deleteModal);
   });
+});
+
+deleteForm.addEventListener("submit", function (e) {
+  e.preventDefault(); // Prevent the form from submitting normally
+  const gameId = this.dataset.gameId; // Get the game ID from the form's dataset
+  fetch(`/games/${gameId}`, { method: "DELETE" })
+    .then((response) => {
+      if (response.ok) { // Check if the response status is 200
+        location.reload(); // Reload the page if the deletion was successful
+      }
+    });
 });
