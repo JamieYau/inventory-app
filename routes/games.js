@@ -5,9 +5,7 @@ const gamesController = require("../controllers/gamesController");
 
 router.get("/", gamesController.index); // Show all games
 router.post("/", gamesController.create); // Save a new game
-// router.get("/:id", itemsController.show); // Show a single item
-// router.get("/:id/edit", itemsController.showEditForm); // Show the form to edit an existing item
-// router.put("/:id", itemsController.update);
-// router.delete("/:id", itemsController.delete);
+router.post("/edit/:gameId", gamesController.edit); // Edit a game
+router.post("/delete/:gameId", gamesController.delete); // Delete a game
 
 module.exports = router;
