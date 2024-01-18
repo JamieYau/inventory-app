@@ -13,22 +13,27 @@
     <header><%- include ("./partials/_header"); %></header>
     <main>
       <div class="main-header">
-        <h1 class="category-title">Categories</h1>
+        <h1 class="category-title"><%= title %></h1>
         <button id="new-category-button">New Category</button>
       </div>
       <ul class="category-list">
         <% categories.forEach(function(category) { %>
         <li class="category">
-          <h2 class="category-name"><%= category.name %></h2>
-          <p class="category-description"><%= category.description %></p>
-          <div class="actions-container">
-            <button class="edit-button">
-              <i class="material-symbols-outlined">edit</i>
-            </button>
-            <button class="delete-button">
-              <i class="material-symbols-outlined">delete</i>
-            </button>
-          </div>
+          <a
+            href="/categories/<%= category._id %>/games"
+            style="text-decoration: none; color: inherit"
+          >
+            <h2 class="category-name"><%= category.name %></h2>
+            <p class="category-description"><%= category.description %></p>
+            <div class="actions-container">
+              <button class="edit-button">
+                <i class="material-symbols-outlined">edit</i>
+              </button>
+              <button class="delete-button">
+                <i class="material-symbols-outlined">delete</i>
+              </button>
+            </div>
+          </a>
         </li>
         <% });%>
       </ul>
