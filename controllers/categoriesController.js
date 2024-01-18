@@ -5,7 +5,6 @@ const Game = require("../models/game");
 // show all categories
 exports.index = asyncHandler(async function (req, res, next) {
   const categories = await Category.find(); // Retrieve all categories from the database
-  console.log(categories);
   res.render("categories", { title: "Categories", categories }); // Render the 'categories/index' view, passing the categories data
 });
 
@@ -28,11 +27,9 @@ exports.showGames = asyncHandler(async function (req, res, next) {
 // Apply edits to category from post request
 exports.edit = asyncHandler(async function (req, res, next) {
   const categoryId = req.params.categoryId;
-  const category = await Category.findById(categoryId);
-  category.name = req.body.name;
-  category.description = req.body.description;
-  await category.save();
-  res.redirect("/categories");
+  const categoryData = req.body;
+  await Category.findByIdAndUpdate(categoryId, categoryData);
+  res.sendStatus(200);
 });
 
 
@@ -41,5 +38,5 @@ exports.delete = asyncHandler(async function (req, res, next) {
   const categoryId = req.params.categoryId;
   await Game.deleteMany({ category: categoryId });
   await Category.findByIdAndDelete(categoryId);
-  res.redirect("/categories");
+  res.sendStatus(200);
 });

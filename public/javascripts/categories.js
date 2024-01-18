@@ -6,6 +6,8 @@ const modals = document.querySelectorAll(".modal");
 const createCategoryModal = document.getElementById("new-category-modal");
 const deleteCategoryModal = document.getElementById("delete-category-modal");
 const editCategoryModal = document.getElementById("edit-category-modal");
+const editForm = document.getElementById("edit-form");
+const deleteForm = document.getElementById("delete-form");
 
 const openModal = (modal) => {
   overlay.style.display = "block";
@@ -32,7 +34,7 @@ overlay.addEventListener("click", closeModals);
 deleteCategoryButtons.forEach((button) => {
   button.addEventListener("click", function (e) {
     const categoryId = this.closest(".category").dataset.categoryId;
-    const deleteForm = document.getElementById("delete-form");
+    deleteForm.dataset.categoryId = categoryId;
     deleteForm.action = `/categories/delete/${categoryId}`;
     openModal(deleteCategoryModal);
   });
@@ -41,8 +43,7 @@ deleteCategoryButtons.forEach((button) => {
 editCategoryButtons.forEach((button) => {
   button.addEventListener("click", function (e) {
     const categoryId = this.closest(".category").dataset.categoryId;
-    const editForm = document.getElementById("edit-form");
-    editForm.action = `/categories/edit/${categoryId}`;
+    editForm.dataset.categoryId = categoryId;
     // get the category name and description from the closest category element
     const category = this.closest(".category");
     const categoryName = category.querySelector(".category-name").textContent;
@@ -53,5 +54,38 @@ editCategoryButtons.forEach((button) => {
     editForm.querySelector("#edit-name").value = categoryName;
     editForm.querySelector("#edit-description").value = categoryDescription;
     openModal(editCategoryModal);
+  });
+});
+
+editForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const categoryId = this.dataset.categoryId;
+  const name = this.querySelector("#edit-name").value;
+  const description = this.querySelector("#edit-description").value;
+  const url = `/categories/${categoryId}`;
+  const data = { name, description };
+  fetch(url, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  }).then((response) => {
+    if (response.ok) {
+      location.reload();
+    }
+  });
+});
+
+deleteForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const categoryId = this.dataset.categoryId;
+  const url = `/categories/${categoryId}`;
+  fetch(url, {
+    method: "DELETE",
+  }).then((response) => {
+    if (response.ok) {
+      location.reload();
+    }
   });
 });

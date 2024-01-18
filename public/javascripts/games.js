@@ -64,15 +64,15 @@ editForm.addEventListener("submit", function (e) {
   const formData = new FormData(this);
   const gameData = Object.fromEntries(formData.entries());
 
-  fetch(`/games/${gameId}`, { 
+  fetch(`/games/${gameId}`, {
     method: "PUT",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(gameData)
-  })
-  .then((response) => {
-    if (response.ok) { // Check if the response status is 200
+    body: JSON.stringify(gameData),
+  }).then((response) => {
+    if (response.ok) {
+      // Check if the response status is 200
       location.reload(); // Reload the page if the update was successful
     }
   });
@@ -89,10 +89,10 @@ deleteGameButtons.forEach((button) => {
 deleteForm.addEventListener("submit", function (e) {
   e.preventDefault(); // Prevent the form from submitting normally
   const gameId = this.dataset.gameId; // Get the game ID from the form's dataset
-  fetch(`/games/${gameId}`, { method: "DELETE" })
-    .then((response) => {
-      if (response.ok) { // Check if the response status is 200
-        location.reload(); // Reload the page if the deletion was successful
-      }
-    });
+  fetch(`/games/${gameId}`, { method: "DELETE" }).then((response) => {
+    if (response.ok) {
+      // Check if the response status is 200
+      location.reload(); // Reload the page if the deletion was successful
+    }
+  });
 });
