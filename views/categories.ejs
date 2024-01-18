@@ -18,7 +18,7 @@
       </div>
       <ul class="category-list">
         <% categories.forEach(function(category) { %>
-        <li class="category">
+        <li class="category" data-category-id="<%= category._id %>">
           <h2 class="category-name"><%= category.name %></h2>
           <p class="category-description"><%= category.description %></p>
           <div class="actions-container">
@@ -30,10 +30,7 @@
             <button class="edit-button">
               <i class="material-symbols-outlined">edit</i>
             </button>
-            <button
-              class="delete-button"
-              data-category-id="<%= category._id %>"
-            >
+            <button class="delete-button">
               <i class="material-symbols-outlined">delete</i>
             </button>
           </div>

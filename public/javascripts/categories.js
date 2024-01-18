@@ -17,6 +17,13 @@ const closeModals = () => {
     modal.style.display = "none";
   });
 };
+// prevent the modal from closing when clicking inside it
+modals.forEach((modal) => {
+  modal.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+});
+
 newCategoryButton.addEventListener("click", () =>
   openModal(createCategoryModal)
 );
@@ -24,7 +31,7 @@ overlay.addEventListener("click", closeModals);
 
 deleteCategoryButtons.forEach((button) => {
   button.addEventListener("click", function (e) {
-    const categoryId = this.dataset.categoryId;
+    const categoryId = this.closest(".category").dataset.categoryId;
     const deleteForm = document.getElementById("delete-form");
     deleteForm.action = `/categories/delete/${categoryId}`;
     openModal(deleteCategoryModal);
@@ -33,7 +40,7 @@ deleteCategoryButtons.forEach((button) => {
 
 editCategoryButtons.forEach((button) => {
   button.addEventListener("click", function (e) {
-    const categoryId = this.dataset.categoryId;
+    const categoryId = this.closest(".category").dataset.categoryId;
     const editForm = document.getElementById("edit-form");
     editForm.action = `/categories/edit/${categoryId}`;
     // get the category name and description from the closest category element
