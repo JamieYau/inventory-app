@@ -24,3 +24,10 @@ exports.showGames = asyncHandler(async function (req, res, next) {
   const games = await Game.find({ category: categoryId }).populate("category");
   res.render("games", { title: category.name, games, categories });
 });
+
+// delete category
+exports.delete = asyncHandler(async function (req, res, next) {
+  const categoryId = req.params.categoryId;
+  await Category.findByIdAndDelete(categoryId);
+  res.redirect("/categories");
+});
