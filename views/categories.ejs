@@ -42,16 +42,27 @@
       </ul>
     </main>
     <footer><%- include ("./partials/_footer"); %></footer>
-    <!-- Modal -->
+    <!-- Modals -->
     <div class="overlay" style="display: none">
       <div id="new-category-modal" class="modal" style="display: none">
         <h2>Create Category</h2>
         <form action="/categories" method="post">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required />
-          <label for="description">Description:</label>
-          <input type="text" id="description" name="description" />
+          <label for="create-name">Name:</label>
+          <input type="text" id="create-name" name="name" required />
+          <label for="create-description">Description:</label>
+          <input type="text" id="create-description" name="description" />
           <input type="submit" value="Create Category" />
+        </form>
+      </div>
+
+      <div id="edit-category-modal" class="modal" style="display: none">
+        <h2>Edit Category</h2>
+        <form id="edit-form" method="post">
+          <label for="edit-name">Name:</label>
+          <input type="text" id="edit-name" name="name" required />
+          <label for="edit-description">Description:</label>
+          <input type="text" id="edit-description" name="description" />
+          <input type="submit" value="Edit Category" />
         </form>
       </div>
 
@@ -63,6 +74,6 @@
         </form>
       </div>
     </div>
-    <!-- End Modal -->
+    <!-- End Modals -->
   </body>
 </html>

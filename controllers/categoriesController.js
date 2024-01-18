@@ -25,6 +25,17 @@ exports.showGames = asyncHandler(async function (req, res, next) {
   res.render("games", { title: category.name, games, categories });
 });
 
+// Apply edits to category from post request
+exports.edit = asyncHandler(async function (req, res, next) {
+  const categoryId = req.params.categoryId;
+  const category = await Category.findById(categoryId);
+  category.name = req.body.name;
+  category.description = req.body.description;
+  await category.save();
+  res.redirect("/categories");
+});
+
+
 // delete category
 exports.delete = asyncHandler(async function (req, res, next) {
   const categoryId = req.params.categoryId;
