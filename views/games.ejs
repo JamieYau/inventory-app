@@ -3,6 +3,10 @@
   <head>
     <%- include ("./partials/_head"), {title}; %>
     <link rel="stylesheet" href="/stylesheets/games.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
     <script defer src="/javascripts/games.js"></script>
   </head>
   <body>
@@ -20,6 +24,14 @@
           <p class="game-description"><%= game.description %></p>
           <p class="game-price">£<%= game.price %></p>
           <p class="game-qty">Qty: <%= game.qty %></p>
+          <div class="actions-container">
+            <button class="edit-button">
+              <i class="material-symbols-outlined">edit</i>
+            </button>
+            <button class="delete-button">
+              <i class="material-symbols-outlined">delete</i>
+            </button>
+          </div>
         </li>
         <% });%>
       </ul>
