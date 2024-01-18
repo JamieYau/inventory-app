@@ -33,10 +33,24 @@ editGameButtons.forEach((button) => {
     editForm.action = `/games/edit/${gameId}`;
     const game = this.closest(".game");
     const gameName = game.querySelector(".game-name").textContent;
-    const gameDescription = game.querySelector(".game-description")
-      .textContent;
+    const gameDescription = game.querySelector(".game-description").textContent;
+    const gamePrice = game
+      .querySelector(".game-price")
+      .textContent.replace("£", "");
+    const gameQty = game
+      .querySelector(".game-qty")
+      .textContent.replace("Qty: ", "");
+    const gameCategory = game.querySelector(".game-category").textContent;
     editForm.querySelector("#edit-name").value = gameName;
     editForm.querySelector("#edit-description").value = gameDescription;
+    editForm.querySelector("#edit-price").value = gamePrice;
+    editForm.querySelector("#edit-qty").value = gameQty;
+    const categorySelect = editForm.querySelector("#edit-category");
+    Array.from(categorySelect.options).forEach((option) => {
+      if (option.text === gameCategory) {
+        option.selected = true;
+      }
+    });
     openModal(editModal);
   });
 });
