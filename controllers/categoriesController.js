@@ -28,6 +28,7 @@ exports.showGames = asyncHandler(async function (req, res, next) {
 // delete category
 exports.delete = asyncHandler(async function (req, res, next) {
   const categoryId = req.params.categoryId;
+  await Game.deleteMany({ category: categoryId });
   await Category.findByIdAndDelete(categoryId);
   res.redirect("/categories");
 });
