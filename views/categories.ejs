@@ -2,6 +2,10 @@
 <html>
   <head>
     <%- include ("./partials/_head"), {title}; %>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/stylesheets/categories.css" />
     <script defer src="/javascripts/categories.js"></script>
   </head>
@@ -17,6 +21,14 @@
         <li class="category">
           <h2 class="category-name"><%= category.name %></h2>
           <p class="category-description"><%= category.description %></p>
+          <div class="actions-container">
+            <button class="edit-button">
+              <i class="material-symbols-outlined">edit</i>
+            </button>
+            <button class="delete-button">
+              <i class="material-symbols-outlined">delete</i>
+            </button>
+          </div>
         </li>
         <% });%>
       </ul>

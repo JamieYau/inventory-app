@@ -50,9 +50,21 @@ main {
   justify-content: space-between;
 }
 
-.game > *,
-.category > * {
-  margin-bottom: 1em;
+.actions-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.actions-container button {
+  background: transparent;
+  border: none;
+}
+
+.actions-container button i {
+  display: block;
+  color: #6d6d6d;
 }
 
 .game-name,
